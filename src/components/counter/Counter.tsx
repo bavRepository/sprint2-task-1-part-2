@@ -8,9 +8,11 @@ type useStateProps = {
     isEdit: boolean
     isError: boolean
     isLimit: boolean
-    content: string | number
+    contentCounter: string | number
     onIncBtnHandler:()=>void
     onResetBtnHandler:()=>void
+    isSetBtnDisabled: boolean
+    onSetBtnHandler:()=>void
 }
 
 export const Counter = (props: useStateProps) => {
@@ -23,21 +25,25 @@ export const Counter = (props: useStateProps) => {
         onResetBtnHandler,
         isError,
         isLimit,
-        content
+        isSetBtnDisabled,
+        onSetBtnHandler,
+        contentCounter
     } = props
 
     return (
-        <S.ContentWrapper>
+        <S.contentCounterWrapper>
             <S.Display>
                 <S.Count $isLimit={isLimit} $isRegularInfo={isEdit && !isError} $isisError={isError}>
-                    {content}
+                    {contentCounter}
                 </S.Count>
             </S.Display>
             <S.ControlMenuWrapper>
                 <Button key={'inc'} disabled={isEdit || isLimit} onClick={onIncBtnHandler}>Inc</Button>
                 <Button key={'reset'} disabled={isEdit || startValue === count}
                         onClick={onResetBtnHandler}>Reset</Button>
+                <Button disabled={isSetBtnDisabled}
+                        onClick={onSetBtnHandler}>Set</Button>
             </S.ControlMenuWrapper>
-        </S.ContentWrapper>
+        </S.contentCounterWrapper>
     );
 };

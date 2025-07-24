@@ -17,7 +17,7 @@ export const Controller = (props: ControllerPropsType) => {
 
 
     return (
-        <S.ContentWrapper>
+        <S.contentCounterWrapper>
             <S.Display>
                 <S.InputBlockWrapper key={'endValue'}>
                     <label htmlFor={'endValue'}>Max value</label>
@@ -34,6 +34,6 @@ export const Controller = (props: ControllerPropsType) => {
                 <Button disabled={isSetBtnDisabled}
                         onClick={onSetBtnHandler}>Set</Button>
             </S.ControlMenuWrapper>
-        </S.ContentWrapper>
+        </S.contentCounterWrapper>
     );
 };

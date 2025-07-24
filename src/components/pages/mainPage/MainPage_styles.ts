@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 export const MainPageStyled = styled.div`
+    margin: 0 auto;
     display: grid;
-    grid-template-columns: repeat(2,1fr);
-    gap: 60px;
+    grid-template-columns: 1fr;
+    justify-items: center;
 `

@@ -1,7 +1,8 @@
 import {MainPageStyled} from './MainPage_styles.ts';
 import {Counter} from "../../counter/Counter.tsx";
-import {Controller} from "../../controller/Controller.tsx";
 import {useCounterStorage} from "../../../hooks/useCounterStorage.tsx";
+import {Controller} from "../../controller/Controller.tsx";
+import {Container} from "../../commom/Container.ts";
 
 export const MainPage = () => {
 
@@ -18,7 +19,7 @@ export const MainPage = () => {
         onResetBtnHandler,
         isError,
         isLimit,
-        content
+        contentCounter
     } = useCounterStorage()
 
     ////////////////  COUNTER & CONTROLLER PROPS  //////////////////////
@@ -33,21 +34,26 @@ export const MainPage = () => {
     }
 
     const CounterPropsObj = {
+        onSetBtnHandler,
+        isSetBtnDisabled,
         endValue,
         startValue,
         count,
         isEdit,
         isError,
         isLimit,
-        content,
+        contentCounter,
         onIncBtnHandler,
         onResetBtnHandler
     }
 
+    const contentMainPage = isEdit ? <Controller {...ControllerPropsObj}/> : <Counter {...CounterPropsObj}/>
+
     return (
         <MainPageStyled>
-            <Controller {...ControllerPropsObj}/>
-            <Counter {...CounterPropsObj}/>
+            <Container>
+                {contentMainPage}
+            </Container>
         </MainPageStyled>
     );
 };

@@ -27,13 +27,13 @@ export const useCounterStorage = () => {
     const onSetBtnHandler = () => {
         setCounter({
             ...counter, count: counter.startValue,
-            isEdit: false,
+            isEdit: !counter.isEdit,
         })
     }
 
     const onInputChangeHandler: onInputChangeHandlerType = (e) => {
         const target = e.currentTarget
-        setCounter({...counter, [target.id]: Number(target.value), isEdit: true,})
+        setCounter({...counter, [target.id]: Number(target.value)})
     }
 
     ////////////////  Counter handle  //////////////////////
@@ -47,7 +47,7 @@ export const useCounterStorage = () => {
         setCounter({...counter, count: counter.startValue});
     }
 
-    ////////////////  CONTENT 18+  //////////////////////
+    ////////////////  Content 18+  //////////////////////
     /////
 
     // [Controller logic]
@@ -62,7 +62,7 @@ export const useCounterStorage = () => {
     const isError = (startValue >= endValue) || (startValue < 0 || endValue < 0);
     const isLimit = count === endValue
 
-    const content = isError ? message.isError : isEdit ? message.ok : count;
+    const contentCounter = isError ? message.isError : isEdit ? message.ok : count;
 
-    return { onSetBtnHandler, onInputChangeHandler, onIncBtnHandler, onResetBtnHandler, isSetBtnDisabled, message, isError, isLimit, content, startValue, count, isEdit, endValue }
+    return { onSetBtnHandler, onInputChangeHandler, onIncBtnHandler, onResetBtnHandler, isSetBtnDisabled, message, isError, isLimit, contentCounter, startValue, count, isEdit, endValue }
 }

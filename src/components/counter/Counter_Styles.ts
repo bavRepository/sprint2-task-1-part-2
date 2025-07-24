@@ -1,10 +1,10 @@
 import styled, {css} from "styled-components";
 import {theme} from "../../styles/Theme.ts";
 
-const ContentWrapper = styled.div`
+const contentCounterWrapper = styled.div`
     margin-top: 15vh;
-    width: 440px;
-    height: 400px;
+    width: 480px;
+    height: 420px;
     border: 4px solid ${theme.colors.mainBrightColor};
     padding: 20px;
     display: flex;
@@ -29,7 +29,7 @@ const Display = styled.div`
 `
 
 const ControlMenuWrapper = styled.div`
-    padding: 20px;
+    padding: 20px 0;
     display: flex;
     justify-content: center;
     gap: 30px;
@@ -77,4 +77,4 @@ const Count = styled.p<{ $isisError?:boolean, $isLimit?:boolean, $isRegularInfo?
     
 `
 
-export const S = {ContentWrapper, Display, ControlMenuWrapper,InputBlockWrapper,Count}
+export const S = {contentCounterWrapper, Display, ControlMenuWrapper,InputBlockWrapper,Count}

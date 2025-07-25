@@ -11,7 +11,7 @@ type ControllerPropsType = {
   isError: boolean
 }
 
-export const CounterDataForm = (props: ControllerPropsType) => {
+export const ControllerForm = (props: ControllerPropsType) => {
   const {
     onInputChangeHandler,
     onSetBtnHandler,

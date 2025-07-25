@@ -21,7 +21,7 @@ export const useCounterStorage = () => {
 
   const { count, startValue, endValue, isEdit } = counter
 
-  ////////////////  Controller fn handle  //////////////////////
+  ////////////////  ControllerForm fn handle  //////////////////////
   /////
 
   const onInputChangeHandler: onInputChangeHandlerType = (e) => {
@@ -29,18 +29,18 @@ export const useCounterStorage = () => {
     setCounter({ ...counter, [target.id]: Number(target.value) })
   }
 
-  ////////////////  Counter fn handle  //////////////////////
+  ////////////////  CounterDisplay fn handle  //////////////////////
   /////
 
   const onIncBtnHandler = () => {
-    setCounter({ ...counter, count: count + 1 })
+    setCounter((prev) => ({ ...counter, count: prev?.count + 1 }))
   }
 
   const onResetBtnHandler = () => {
     setCounter({ ...counter, count: counter.startValue })
   }
 
-  ////////////////  Controller & Counter fn handle  //////////////////////
+  ////////////////  ControllerForm & CounterDisplay fn handle  //////////////////////
   /////
 
   const onSetBtnHandler = () => {

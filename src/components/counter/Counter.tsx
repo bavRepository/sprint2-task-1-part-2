@@ -1,6 +1,6 @@
 import { S } from './Counter_Styles.ts'
 import { useCounterStorage } from '../../hooks/useCounterStorage.tsx'
-import { CounterDataForm } from './counterDataForm/CounterDataForm.tsx'
+import { ControllerForm } from './controllerForm/ControllerForm.tsx'
 import { CounterDisplay } from './counterDisplay/CounterDisplay.tsx'
 
 export const Counter = () => {
@@ -23,7 +23,7 @@ export const Counter = () => {
   ////////////////  COUNTER & CONTROLLER PROPS  //////////////////////
   /////
 
-  const counterDataForm = {
+  const ControllerFormProps = {
     onInputChangeHandler,
     onSetBtnHandler,
     isSetBtnDisabled,
@@ -32,7 +32,7 @@ export const Counter = () => {
     isError,
   }
 
-  const counterDisplay = {
+  const counterDisplayProps = {
     onSetBtnHandler,
     isSetBtnDisabled,
     endValue,
@@ -47,9 +47,9 @@ export const Counter = () => {
   }
 
   const contentMainPage = isEdit ? (
-    <CounterDataForm {...counterDataForm} />
+    <ControllerForm {...ControllerFormProps} />
   ) : (
-    <CounterDisplay {...counterDisplay} />
+    <CounterDisplay {...counterDisplayProps} />
   )
   return <S.StyledCounter>{contentMainPage}</S.StyledCounter>
 }

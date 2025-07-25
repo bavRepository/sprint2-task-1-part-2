@@ -1,5 +1,5 @@
 import { S } from './Counter_Styles.ts'
-import { useCounterStorage } from '../../hooks/useCounterStorage.tsx'
+import { useCounterHandler } from '../../hooks/useCounterHandler.tsx'
 import { ControllerForm } from './controllerForm/ControllerForm.tsx'
 import { CounterDisplay } from './counterDisplay/CounterDisplay.tsx'
 
@@ -18,7 +18,7 @@ export const Counter = () => {
     isError,
     isLimit,
     contentCounter,
-  } = useCounterStorage()
+  } = useCounterHandler()
 
   ////////////////  COUNTER & CONTROLLER PROPS  //////////////////////
   /////

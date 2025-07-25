@@ -21,22 +21,15 @@ export const useCounterStorage = () => {
     const {count, startValue, endValue, isEdit} = counter
 
 
-    ////////////////  Controller handle  //////////////////////
+    ////////////////  Controller fn handle  //////////////////////
     /////
-
-    const onSetBtnHandler = () => {
-        setCounter({
-            ...counter, count: counter.startValue,
-            isEdit: !counter.isEdit,
-        })
-    }
 
     const onInputChangeHandler: onInputChangeHandlerType = (e) => {
         const target = e.currentTarget
         setCounter({...counter, [target.id]: Number(target.value)})
     }
 
-    ////////////////  Counter handle  //////////////////////
+    ////////////////  Counter fn handle  //////////////////////
     /////
 
     const onIncBtnHandler = () => {
@@ -46,6 +39,17 @@ export const useCounterStorage = () => {
     const onResetBtnHandler = () => {
         setCounter({...counter, count: counter.startValue});
     }
+
+    ////////////////  Controller & Counter fn handle  //////////////////////
+    /////
+
+    const onSetBtnHandler = () => {
+        setCounter({
+            ...counter, count: counter.startValue,
+            isEdit: !counter.isEdit,
+        })
+    }
+
 
     ////////////////  Content 18+  //////////////////////
     /////

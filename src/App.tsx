@@ -1,10 +1,9 @@
-import {MainPage} from "./components/pages/mainPage/MainPage.tsx";
+import { MainPage } from './components/pages/mainPage/MainPage.tsx'
 
 function App() {
-
   return (
     <>
-        <MainPage/>
+      <MainPage />
     </>
   )
 }

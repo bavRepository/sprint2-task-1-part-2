@@ -1,49 +1,54 @@
-import {S} from './Counter_Styles.ts';
-import {Button} from "../commom/button/Button.ts";
+import { S } from './Counter_Styles.ts'
+import { useCounterStorage } from '../../hooks/useCounterStorage.tsx'
+import { CounterDataForm } from './counterDataForm/CounterDataForm.tsx'
+import { CounterDisplay } from './counterDisplay/CounterDisplay.tsx'
 
-type useStateProps = {
-    endValue: number
-    startValue: number
-    count: number
-    isEdit: boolean
-    isError: boolean
-    isLimit: boolean
-    contentCounter: string | number
-    onIncBtnHandler:()=>void
-    onResetBtnHandler:()=>void
-    isSetBtnDisabled: boolean
-    onSetBtnHandler:()=>void
+export const Counter = () => {
+  // IMPORT COUNTER & CONTROLLER DATA FROM CUSTOM HOOK
+  const {
+    startValue,
+    endValue,
+    count,
+    isEdit,
+    onIncBtnHandler,
+    onInputChangeHandler,
+    onSetBtnHandler,
+    isSetBtnDisabled,
+    onResetBtnHandler,
+    isError,
+    isLimit,
+    contentCounter,
+  } = useCounterStorage()
+
+  ////////////////  COUNTER & CONTROLLER PROPS  //////////////////////
+  /////
+
+  const ControllerPropsObj = {
+    onInputChangeHandler,
+    onSetBtnHandler,
+    isSetBtnDisabled,
+    startValue,
+    endValue,
+  }
+
+  const CounterPropsObj = {
+    onSetBtnHandler,
+    isSetBtnDisabled,
+    endValue,
+    startValue,
+    count,
+    isEdit,
+    isError,
+    isLimit,
+    contentCounter,
+    onIncBtnHandler,
+    onResetBtnHandler,
+  }
+
+  const contentMainPage = isEdit ? (
+    <CounterDataForm {...ControllerPropsObj} />
+  ) : (
+    <CounterDisplay {...CounterPropsObj} />
+  )
+  return <S.StyledCounter>{contentMainPage}</S.StyledCounter>
 }
-
-export const Counter = (props: useStateProps) => {
-
-    const {
-        startValue,
-        count,
-        isEdit,
-        onIncBtnHandler,
-        onResetBtnHandler,
-        isError,
-        isLimit,
-        isSetBtnDisabled,
-        onSetBtnHandler,
-        contentCounter
-    } = props
-
-    return (
-        <S.contentCounterWrapper>
-            <S.Display>
-                <S.Count $isLimit={isLimit} $isRegularInfo={isEdit && !isError} $isisError={isError}>
-                    {contentCounter}
-                </S.Count>
-            </S.Display>
-            <S.ControlMenuWrapper>
-                <Button key={'inc'} disabled={isEdit || isLimit} onClick={onIncBtnHandler}>Inc</Button>
-                <Button key={'reset'} disabled={isEdit || startValue === count}
-                        onClick={onResetBtnHandler}>Reset</Button>
-                <Button disabled={isSetBtnDisabled}
-                        onClick={onSetBtnHandler}>Set</Button>
-            </S.ControlMenuWrapper>
-        </S.contentCounterWrapper>
-    );
-};

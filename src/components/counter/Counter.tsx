@@ -23,15 +23,16 @@ export const Counter = () => {
   ////////////////  COUNTER & CONTROLLER PROPS  //////////////////////
   /////
 
-  const ControllerPropsObj = {
+  const counterDataForm = {
     onInputChangeHandler,
     onSetBtnHandler,
     isSetBtnDisabled,
     startValue,
     endValue,
+    isError,
   }
 
-  const CounterPropsObj = {
+  const counterDisplay = {
     onSetBtnHandler,
     isSetBtnDisabled,
     endValue,
@@ -46,9 +47,9 @@ export const Counter = () => {
   }
 
   const contentMainPage = isEdit ? (
-    <CounterDataForm {...ControllerPropsObj} />
+    <CounterDataForm {...counterDataForm} />
   ) : (
-    <CounterDisplay {...CounterPropsObj} />
+    <CounterDisplay {...counterDisplay} />
   )
   return <S.StyledCounter>{contentMainPage}</S.StyledCounter>
 }

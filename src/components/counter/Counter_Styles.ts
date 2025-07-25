@@ -49,15 +49,16 @@ const InputBlockWrapper = styled.div`
     color: white;
     min-width: 200px;
   }
-  input {
-    max-width: 120px;
-    padding: 5px 10px;
-    border: 4px solid ${theme.colors.mainBrightColor};
-    border-radius: 10px;
-    font-size: 20px;
-    font-weight: 500;
-    text-align: center;
-  }
+`
+const InputCounterData = styled.input<{ $isEroor: boolean }>`
+  max-width: 120px;
+  padding: 5px 10px;
+  border: 4px solid ${theme.colors.mainBrightColor};
+  border-radius: 10px;
+  font-size: 20px;
+  font-weight: 500;
+  text-align: center;
+  background-color: ${(props) => (props.$isEroor ? 'red' : 'white')};
 `
 
 const Count = styled.p<{
@@ -95,4 +96,5 @@ export const S = {
   ControlMenuWrapper,
   InputBlockWrapper,
   Count,
+  InputCounterData,
 }

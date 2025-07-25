@@ -8,6 +8,7 @@ type ControllerPropsType = {
   isSetBtnDisabled: boolean
   startValue: number
   endValue: number
+  isError: boolean
 }
 
 export const CounterDataForm = (props: ControllerPropsType) => {
@@ -17,6 +18,7 @@ export const CounterDataForm = (props: ControllerPropsType) => {
     isSetBtnDisabled,
     startValue,
     endValue,
+    isError,
   } = props
 
   return (
@@ -24,20 +26,22 @@ export const CounterDataForm = (props: ControllerPropsType) => {
       <S.Display>
         <S.InputBlockWrapper key={'endValue'}>
           <label htmlFor={'endValue'}>Max value</label>
-          <input
+          <S.InputCounterData
             type={'number'}
             id={'endValue'}
             onChange={onInputChangeHandler}
             value={endValue}
+            $isEroor={isError}
           />
         </S.InputBlockWrapper>
         <S.InputBlockWrapper key={'startValue'}>
           <label htmlFor={'startValue'}>Start value</label>
-          <input
+          <S.InputCounterData
             type={'number'}
             id={'startValue'}
             onChange={onInputChangeHandler}
             value={startValue}
+            $isEroor={isError}
           />
         </S.InputBlockWrapper>
       </S.Display>

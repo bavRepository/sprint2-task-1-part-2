@@ -12,6 +12,11 @@ type counterProps = {
   endValue: number
   isEdit: boolean
 }
+
+const updateLSCounterData = (key: string, dataCounterObj: counterProps) => {
+  localStorage.setItem(key, JSON.stringify(dataCounterObj))
+}
+
 const getCounterFromLS = (initialData: counterProps): counterProps => {
   let initialCounterData: counterProps = initialData
 
@@ -20,7 +25,7 @@ const getCounterFromLS = (initialData: counterProps): counterProps => {
     const parsedCounter: counterProps = JSON.parse(storedCounter)
     initialCounterData = { ...parsedCounter }
   } else {
-    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(initialData))
+    updateLSCounterData(LOCAL_STORAGE_KEY, initialData)
   }
   return initialCounterData
 }
@@ -37,7 +42,7 @@ export const useCounterHandler = () => {
   const [counter, setCounter] = useState<counterProps>(initialCounterData)
 
   useEffect(() => {
-    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(counter))
+    updateLSCounterData(LOCAL_STORAGE_KEY, counter)
   }, [counter])
 
   const { count, startValue, endValue, isEdit } = counter

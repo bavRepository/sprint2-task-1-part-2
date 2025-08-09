@@ -14,10 +14,13 @@ type counterProps = {
 }
 const getCounterFromLS = (initialData: counterProps): counterProps => {
   let initialCounterData: counterProps = initialData
+
   const storedCounter = localStorage.getItem(LOCAL_STORAGE_KEY)
   if (storedCounter) {
     const parsedCounter: counterProps = JSON.parse(storedCounter)
     initialCounterData = { ...parsedCounter }
+  } else {
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(initialData))
   }
   return initialCounterData
 }

@@ -1,6 +1,6 @@
 import { S } from '../Counter_Styles.ts'
 import { Button } from '../../commom/button/Button.ts'
-import { type ChangeEvent, useEffect } from 'react'
+import { type ChangeEvent } from 'react'
 
 import { useAppDispatch } from '../../../common/hooks/useAppDispatch.ts'
 import { useAppSelector } from '../../../common/hooks/useAppSelector.ts'
@@ -17,18 +17,17 @@ export const ControllerForm = () => {
   const dispatch = useAppDispatch()
   const counter = useAppSelector(counterSelector)
 
-  const { startValue, endValue } = counter
-
-  useEffect(() => {
-    updateLSCounterData(counter)
-  }, [startValue, endValue])
+  const { startValue, endValue, isEdit } = counter
 
   const setUserValuesOnBtn = () => {
     dispatch(setStartValueAC({ startValue }))
+    updateLSCounterData({ ...counter, startValue, endValue, isEdit: !isEdit })
   }
 
   const onInputChangeHandler: onInputChangeHandlerType = (e) => {
-    const inputId = e.currentTarget.id,
+    const inputId = e.currentTarget.dataset.inpname as
+        | 'startValue'
+        | 'endValue',
       newCount = Number(e.currentTarget.value)
     dispatch(changeStartEndValuesAC({ inputId, newCount }))
   }
@@ -43,7 +42,7 @@ export const ControllerForm = () => {
           <label htmlFor={'endValue'}>Max value</label>
           <S.InputCounterData
             type={'number'}
-            id={'endValue'}
+            data-inpname={'endValue'}
             onChange={onInputChangeHandler}
             value={endValue}
             $isError={isError}
@@ -53,7 +52,7 @@ export const ControllerForm = () => {
           <label htmlFor={'startValue'}>Start value</label>
           <S.InputCounterData
             type={'number'}
-            id={'startValue'}
+            data-inpname={'startValue'}
             onChange={onInputChangeHandler}
             value={startValue}
             $isError={isError}

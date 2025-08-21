@@ -21,7 +21,7 @@ export const setStartValueAC = createAction<{ startValue: number }>(
   'counter/setCounterValues',
 )
 export const changeStartEndValuesAC = createAction<{
-  inputId: string
+  inputId: 'startValue' | 'endValue'
   newCount: number
 }>('counter/changeStartEndValues')
 export const setNewIncrementValueAC = createAction(

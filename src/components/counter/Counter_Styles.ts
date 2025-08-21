@@ -50,7 +50,7 @@ const InputBlockWrapper = styled.div`
     min-width: 200px;
   }
 `
-const InputCounterData = styled.input<{ $isEroor: boolean }>`
+const InputCounterData = styled.input<{ $isError: boolean }>`
   max-width: 120px;
   padding: 5px 10px;
   border: 4px solid ${theme.colors.mainBrightColor};
@@ -58,7 +58,7 @@ const InputCounterData = styled.input<{ $isEroor: boolean }>`
   font-size: 20px;
   font-weight: 500;
   text-align: center;
-  background-color: ${(props) => (props.$isEroor ? 'red' : 'white')};
+  background-color: ${(props) => (props.$isError ? 'red' : 'white')};
 `
 
 const Count = styled.p<{
